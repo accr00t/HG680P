@@ -4,7 +4,7 @@ proxies:
   type: vmess
   server: quiz.vidio.com
   port: 443
-  uuid: 
+  uuid: UUID_Anda
   alterId: 0
   cipher: auto
   udp: true
@@ -21,7 +21,7 @@ proxies:
   type: vmess
   server: quiz.vidio.com
   port: 80
-  uuid: 
+  uuid: UUID_Anda
   alterId: 0
   cipher: auto
   udp: true
@@ -38,7 +38,7 @@ proxies:
   server: quiz.vidio.com
   port: 443
   type: vmess
-  uuid: 
+  uuid: UUID_Anda
   cipher: auto
   network: grpc
   tls: true
@@ -51,7 +51,7 @@ proxies:
   server: quiz.vidio.com
   port: 443
   type: trojan
-  password: 
+  password: PASSWORD_Anda
   skip-cert-verify: true
   sni: sg3tr.jagoanvip.xyz
   network: ws
@@ -65,7 +65,7 @@ proxies:
   type: trojan
   server: quiz.vidio.com
   port: 443
-  password: 
+  password: PASSWORD_Anda
   udp: true
   sni: sg3tr.jagoanvip.xyz
   skip-cert-verify: true
