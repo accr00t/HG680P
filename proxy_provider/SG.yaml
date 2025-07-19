@@ -47,7 +47,7 @@ proxies:
   grpc-opts:
     grpc-service-name: grpc
 # Expired : 2025-08-17
-- name: Trojan WS
+- name: 🇬🇧 Trojan WS
   server: quiz.vidio.com
   port: 443
   type: trojan
@@ -61,7 +61,7 @@ proxies:
       Host: sg3tr.jagoanvip.xyz
   udp: true
 # Expired : 2025-08-17
-- name: Trojan gRPC
+- name: 🇬🇧 Trojan gRPC
   type: trojan
   server: quiz.vidio.com
   port: 443
