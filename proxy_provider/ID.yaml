@@ -2,7 +2,7 @@ proxies:
 #
 - name: 🇮🇩 ID1-2007-Jagoan-443
   type: vmess
-  server: quiz.vidio.com
+  server: BUG_PAKET
   port: 443
   uuid: b26beb19-ac6b-4ff7-888c-25812853ef12
   alterId: 0
@@ -19,7 +19,7 @@ proxies:
 #
 - name: 🇮🇩 ID1-2007-Jagoan-80
   type: vmess
-  server: quiz.vidio.com
+  server: BUG_PAKET
   port: 80
   uuid: b26beb19-ac6b-4ff7-888c-25812853ef12
   alterId: 0
@@ -36,7 +36,7 @@ proxies:
 #
 - name: 🇮🇩 ID2-2007-Jagoan-443
   type: vmess
-  server: quiz.vidio.com
+  server: BUG_PAKET
   port: 443
   uuid: 909d0464-9cc8-45af-9b39-2bb8c07fb9ed
   alterId: 0
@@ -53,7 +53,7 @@ proxies:
 #
 - name: 🇮🇩 ID2-2007-Jagoan-80
   type: vmess
-  server: quiz.vidio.com
+  server: BUG_PAKET
   port: 80
   uuid: 909d0464-9cc8-45af-9b39-2bb8c07fb9ed
   alterId: 0
