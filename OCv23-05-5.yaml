@@ -31,7 +31,7 @@ rule-providers:
   Indo:
     type: file
     behavior: classical
-    path: "./rule_provider/indonesia.yaml"
+    path: "./rule_provider/indo.yaml"
 proxy-providers:
   ID:
     type: file
