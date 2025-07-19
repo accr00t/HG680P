@@ -2,7 +2,7 @@ proxies:
 #172.66.144.39 #172.67.5.14
 - name: 🇬🇧 SG-443
   type: vmess
-  server: quiz.vidio.com
+  server: BUG_PAKET
   port: 443
   uuid: UUID_Anda
   alterId: 0
@@ -19,7 +19,7 @@ proxies:
 #
 - name: 🇬🇧 SG-80
   type: vmess
-  server: quiz.vidio.com
+  server: BUG_PAKET
   port: 80
   uuid: UUID_Anda
   alterId: 0
@@ -35,7 +35,7 @@ proxies:
       Host: sg4ray.jagoanvip.xyz
 #
 - name: 🇬🇧 SG-gRPC
-  server: quiz.vidio.com
+  server: BUG_PAKET
   port: 443
   type: vmess
   uuid: UUID_Anda
@@ -48,7 +48,7 @@ proxies:
     grpc-service-name: grpc
 # Expired : 2025-08-17
 - name: 🇬🇧 Trojan WS
-  server: quiz.vidio.com
+  server: BUG_PAKET
   port: 443
   type: trojan
   password: PASSWORD_Anda
@@ -63,7 +63,7 @@ proxies:
 # Expired : 2025-08-17
 - name: 🇬🇧 Trojan gRPC
   type: trojan
-  server: quiz.vidio.com
+  server: BUG_PAKET
   port: 443
   password: PASSWORD_Anda
   udp: true
