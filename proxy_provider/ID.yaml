@@ -1,5 +1,5 @@
 proxies:
-#
+#CONTOH
 - name: 🇮🇩 ID1-2007-Jagoan-443
   type: vmess
   server: BUG_PAKET
@@ -16,7 +16,7 @@ proxies:
     path: /JAGOANSSH/
     headers:
       Host: id1-ray.ipservers.xyz
-#
+#CONTOH
 - name: 🇮🇩 ID1-2007-Jagoan-80
   type: vmess
   server: BUG_PAKET
@@ -33,7 +33,7 @@ proxies:
     path: /JAGOANSSH/
     headers:
       Host: id1-ray.ipservers.xyz
-#
+#CONTOH
 - name: 🇮🇩 ID2-2007-Jagoan-443
   type: vmess
   server: BUG_PAKET
@@ -50,7 +50,7 @@ proxies:
     path: /JAGOANSSH/
     headers:
       Host: id2-ray.ipservers.xyz
-#
+#CONTOH
 - name: 🇮🇩 ID2-2007-Jagoan-80
   type: vmess
   server: BUG_PAKET
