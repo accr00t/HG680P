@@ -1,0 +1,75 @@
+proxies:
+#172.66.144.39 #172.67.5.14
+- name: 🇬🇧 SG-443
+  type: vmess
+  server: quiz.vidio.com
+  port: 443
+  uuid: 1dcc087b-cdf9-4082-a5d6-1fbe4eb77333
+  alterId: 0
+  cipher: auto
+  udp: true
+  skip-cert-verify: true
+  tls: true
+  servername: sg4ray.jagoanvip.xyz
+  network: ws
+  ws-opts:
+    path: /vvip
+    headers:
+      Host: sg4ray.jagoanvip.xyz
+#
+- name: 🇬🇧 SG-80
+  type: vmess
+  server: quiz.vidio.com
+  port: 80
+  uuid: 1dcc087b-cdf9-4082-a5d6-1fbe4eb77333
+  alterId: 0
+  cipher: auto
+  udp: true
+  skip-cert-verify: true
+  tls: false
+  servername: sg4ray.jagoanvip.xyz
+  network: ws
+  ws-opts:
+    path: /vvip
+    headers:
+      Host: sg4ray.jagoanvip.xyz
+#
+- name: 🇬🇧 SG-gRPC
+  server: quiz.vidio.com
+  port: 443
+  type: vmess
+  uuid: 1dcc087b-cdf9-4082-a5d6-1fbe4eb77333
+  alterId: 0
+  cipher: auto
+  network: grpc
+  tls: true
+  servername: sg4ray.jagoanvip.xyz
+  skip-cert-verify: true
+  grpc-opts:
+    grpc-service-name: grpc
+# Expired : 2025-08-17
+- name: Trojan WS
+  server: quiz.vidio.com
+  port: 443
+  type: trojan
+  password: vvip-anGgY10kT
+  skip-cert-verify: true
+  sni: sg3tr.jagoanvip.xyz
+  network: ws
+  ws-opts:
+    path: /trojan
+    headers:
+      Host: sg3tr.jagoanvip.xyz
+  udp: true
+# Expired : 2025-08-17
+- name: Trojan gRPC
+  type: trojan
+  server: quiz.vidio.com
+  port: 443
+  password: vvip-anGgY10kT
+  udp: true
+  sni: sg3tr.jagoanvip.xyz
+  skip-cert-verify: true
+  network: grpc
+  grpc-opts:
+    grpc-service-name: trojangrpc

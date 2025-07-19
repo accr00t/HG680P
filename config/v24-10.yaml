@@ -1,0 +1,181 @@
+rule-providers:
+  Adblock:
+    type: file
+    behavior: classical
+    path: "./rule_provider/adblock.yaml"
+  Direct:
+    type: file
+    behavior: classical
+    path: "./rule_provider/direct.yaml"
+  Reject:
+    type: file
+    behavior: classical
+    path: "./rule_provider/reject.yaml"
+  Streaming:
+    type: file
+    behavior: classical
+    path: "./rule_provider/streaming.yaml"
+  Games:
+    type: file
+    behavior: classical
+    path: "./rule_provider/games.yaml"
+  Sosmed:
+    type: file
+    behavior: classical
+    path: "./rule_provider/sosmed.yaml"
+  Ewallet:
+    type: file
+    behavior: classical
+    path: "./rule_provider/ewallet.yaml"
+  Indonesia:
+    type: file
+    behavior: classical
+    path: "./rule_provider/indonesia.yaml"
+proxy-providers:
+  ID:
+    type: file
+    path: "./proxy_provider/ID.yaml"
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 60
+      lazy: true
+  SG:
+    type: file
+    path: "./proxy_provider/SG.yaml"
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 60
+      lazy: true
+proxy-groups:
+  - name: "\U0001F310 Internet"
+    type: select
+    disable-udp: false
+    proxies:
+      - "🔄 FallBack"
+      - "📶 Best Ping"
+      - "🇯🇵 LoadBalance"
+      - "🇯🇵 FallBack"
+      - "🇯🇵 Best Ping"
+      - "🇮🇩 FallBack"
+      - "🇮🇩 Best Ping"
+    use:
+      - SG
+      - ID
+  - name: "\U0001F51E Adult"
+    type: select
+    proxies:
+    - REJECT
+    - "\U0001F310 Internet"
+  - name: "\U0001F4F1 Media-Sosial"
+    type: select
+    disable-udp: false
+    proxies:
+      - "🔄 FallBack"
+      - "📶 Best Ping"
+      - "🇯🇵 LoadBalance"
+      - "🇯🇵 FallBack"
+      - "🇯🇵 Best Ping"
+      - "🇮🇩 FallBack"
+      - "🇮🇩 Best Ping"
+  - name: "\U0001F4B3 Transaksi"
+    type: select
+    disable-udp: false
+    proxies:
+      - "🔄 FallBack"
+      - "📶 Best Ping"
+      - "🇯🇵 LoadBalance"
+      - "🇯🇵 FallBack"
+      - "🇯🇵 Best Ping"
+      - "🇮🇩 FallBack"
+      - "🇮🇩 Best Ping"
+  - name: HanyaID
+    type: select
+    disable-udp: false
+    proxies:
+      - "🇮🇩 FallBack"
+      - "🇮🇩 Best Ping"
+  - name: "\U0001F3AE Game"
+    type: select
+    disable-udp: false
+    proxies:
+      - "🔄 FallBack"
+      - "📶 Best Ping"
+      - "🇯🇵 LoadBalance"
+      - "🇯🇵 FallBack"
+      - "🇯🇵 Best Ping"
+      - "🇮🇩 FallBack"
+      - "🇮🇩 Best Ping"
+  - name: "🔄 FallBack"
+    type: fallback
+    disable-udp: false
+    use:
+      - SG
+      - ID
+    url: http://www.google.com/generate_204
+    interval: 30
+    tolerance: 150
+  - name: "📶 Best Ping"
+    type: url-test
+    disable-udp: false
+    use:
+      - SG
+      - ID
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 200
+  - name: "🇯🇵 LoadBalance"
+    type: load-balance
+    strategy: round-robin
+    use:
+      - SG
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    disable-udp: false
+  - name: "🇯🇵 FallBack"
+    type: fallback
+    disable-udp: false
+    use:
+      - SG
+    url: http://www.gstatic.com/generate_204
+    interval: 30
+    tolerance: 150
+  - name: "🇮🇩 FallBack"
+    type: fallback
+    disable-udp: false
+    use:
+      - ID
+    url: http://www.gstatic.com/generate_204
+    interval: 30
+    tolerance: 150
+  - name: "🇯🇵 Best Ping"
+    type: url-test
+    disable-udp: false
+    use:
+      - SG
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 200
+  - name: "🇮🇩 Best Ping"
+    type: url-test
+    disable-udp: false
+    use:
+      - ID
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 200
+rules:
+- DST-PORT,7895,REJECT
+- DST-PORT,7892,REJECT
+- IP-CIDR,198.18.0.1/16,REJECT,no-resolve
+- DOMAIN-SUFFIX,quiz.vidio.com,DIRECT,no-resolve
+- IP-CIDR,8.8.8.8/32,DIRECT,no-resolve
+- RULE-SET,Indonesia,HanyaID
+- "RULE-SET,Sosmed,\U0001F4F1 Media-Sosial"
+- "RULE-SET,Ewallet,\U0001F4B3 Transaksi"
+- "RULE-SET,Games,\U0001F3AE Game"
+- "RULE-SET,Adblock,\U0001F51E Adult"
+- RULE-SET,Direct,DIRECT
+- RULE-SET,Reject,REJECT
+- MATCH,GLOBAL

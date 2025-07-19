@@ -1,0 +1,251 @@
+---
+rule-providers:
+  Adblock:
+    type: file
+    behavior: classical
+    path: "./rule_provider/adblock.yaml"
+  Direct:
+    type: file
+    behavior: classical
+    path: "./rule_provider/direct.yaml"
+  Reject:
+    type: file
+    behavior: classical
+    path: "./rule_provider/reject.yaml"
+  Streaming:
+    type: file
+    behavior: classical
+    path: "./rule_provider/streaming.yaml"
+  Games:
+    type: file
+    behavior: classical
+    path: "./rule_provider/games.yaml"
+  Sosmed:
+    type: file
+    behavior: classical
+    path: "./rule_provider/sosmed.yaml"
+  Ewallet:
+    type: file
+    behavior: classical
+    path: "./rule_provider/ewallet.yaml"
+  Indonesia:
+    type: file
+    behavior: classical
+    path: "./rule_provider/indonesia.yaml"
+proxy-providers:
+  ID:
+    type: file
+    path: "./proxy_provider/ID.yaml"
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 60
+      lazy: true
+  SG:
+    type: file
+    path: "./proxy_provider/SG.yaml"
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 60
+      lazy: true
+proxy-groups:
+- name: "\U0001F310 Internet"
+  type: select
+  disable-udp: false
+  proxies:
+  - "\U0001F504 FallBack"
+  - "\U0001F4F6 Best Ping"
+  - "\U0001F1EF\U0001F1F5 LoadBalance"
+  - "\U0001F1EF\U0001F1F5 FallBack"
+  - "\U0001F1EF\U0001F1F5 Best Ping"
+  - "\U0001F1EE\U0001F1E9 FallBack"
+  - "\U0001F1EE\U0001F1E9 Best Ping"
+  use:
+  - SG
+  - ID
+- name: "\U0001F51E Adult"
+  type: select
+  proxies:
+  - REJECT
+  - "\U0001F310 Internet"
+- name: "\U0001F4F1 Media-Sosial"
+  type: select
+  disable-udp: false
+  proxies:
+  - "\U0001F504 FallBack"
+  - "\U0001F4F6 Best Ping"
+  - "\U0001F1EF\U0001F1F5 LoadBalance"
+  - "\U0001F1EF\U0001F1F5 FallBack"
+  - "\U0001F1EF\U0001F1F5 Best Ping"
+  - "\U0001F1EE\U0001F1E9 FallBack"
+  - "\U0001F1EE\U0001F1E9 Best Ping"
+- name: "\U0001F4B3 Transaksi"
+  type: select
+  disable-udp: false
+  proxies:
+  - "\U0001F504 FallBack"
+  - "\U0001F4F6 Best Ping"
+  - "\U0001F1EF\U0001F1F5 LoadBalance"
+  - "\U0001F1EF\U0001F1F5 FallBack"
+  - "\U0001F1EF\U0001F1F5 Best Ping"
+  - "\U0001F1EE\U0001F1E9 FallBack"
+  - "\U0001F1EE\U0001F1E9 Best Ping"
+- name: HanyaID
+  type: select
+  disable-udp: false
+  proxies:
+  - "\U0001F1EE\U0001F1E9 FallBack"
+  - "\U0001F1EE\U0001F1E9 Best Ping"
+- name: "\U0001F3AE Game"
+  type: select
+  disable-udp: false
+  proxies:
+  - "\U0001F504 FallBack"
+  - "\U0001F4F6 Best Ping"
+  - "\U0001F1EF\U0001F1F5 LoadBalance"
+  - "\U0001F1EF\U0001F1F5 FallBack"
+  - "\U0001F1EF\U0001F1F5 Best Ping"
+  - "\U0001F1EE\U0001F1E9 FallBack"
+  - "\U0001F1EE\U0001F1E9 Best Ping"
+- name: "\U0001F504 FallBack"
+  type: fallback
+  disable-udp: false
+  use:
+  - SG
+  - ID
+  url: http://www.google.com/generate_204
+  interval: 30
+  tolerance: 150
+- name: "\U0001F4F6 Best Ping"
+  type: url-test
+  disable-udp: false
+  use:
+  - SG
+  - ID
+  url: http://www.gstatic.com/generate_204
+  interval: 300
+  tolerance: 200
+- name: "\U0001F1EF\U0001F1F5 LoadBalance"
+  type: load-balance
+  strategy: round-robin
+  use:
+  - SG
+  url: http://www.gstatic.com/generate_204
+  interval: 300
+  disable-udp: false
+- name: "\U0001F1EF\U0001F1F5 FallBack"
+  type: fallback
+  disable-udp: false
+  use:
+  - SG
+  url: http://www.gstatic.com/generate_204
+  interval: 30
+  tolerance: 150
+- name: "\U0001F1EE\U0001F1E9 FallBack"
+  type: fallback
+  disable-udp: false
+  use:
+  - ID
+  url: http://www.gstatic.com/generate_204
+  interval: 30
+  tolerance: 150
+- name: "\U0001F1EF\U0001F1F5 Best Ping"
+  type: url-test
+  disable-udp: false
+  use:
+  - SG
+  url: http://www.gstatic.com/generate_204
+  interval: 300
+  tolerance: 200
+- name: "\U0001F1EE\U0001F1E9 Best Ping"
+  type: url-test
+  disable-udp: false
+  use:
+  - ID
+  url: http://www.gstatic.com/generate_204
+  interval: 300
+  tolerance: 200
+rules:
+- DST-PORT,7895,REJECT
+- DST-PORT,7892,REJECT
+- IP-CIDR,198.18.0.1/16,REJECT,no-resolve
+- DOMAIN-SUFFIX,quiz.vidio.com,DIRECT,no-resolve
+- IP-CIDR,8.8.8.8/32,DIRECT,no-resolve
+- RULE-SET,Indonesia,HanyaID
+- "RULE-SET,Sosmed,\U0001F4F1 Media-Sosial"
+- "RULE-SET,Ewallet,\U0001F4B3 Transaksi"
+- "RULE-SET,Games,\U0001F3AE Game"
+- "RULE-SET,Adblock,\U0001F51E Adult"
+- RULE-SET,Direct,DIRECT
+- RULE-SET,Reject,REJECT
+- MATCH,GLOBAL
+dns:
+  enable: true
+  ipv6: false
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  listen: 0.0.0.0:7874
+  respect-rules: true
+  nameserver:
+  - dhcp://"usb0"
+  - 192.168.42.129
+  - tls://dns.quad9.net
+  - https://dns.quad9.net/dns-query
+  default-nameserver:
+  - 192.168.42.129
+  proxy-server-nameserver:
+  - 9.9.9.9
+  - 149.112.112.112
+redir-port: 7892
+tproxy-port: 7895
+port: 7890
+socks-port: 7891
+mixed-port: 7893
+mode: rule
+log-level: silent
+allow-lan: true
+external-controller: 0.0.0.0:9090
+secret: reyre
+bind-address: "*"
+external-ui: "/usr/share/openclash/ui"
+keep-alive-interval: 15
+keep-alive-idle: 600
+ipv6: false
+tcp-concurrent: true
+unified-delay: true
+experimental:
+  quic-go-disable-gso: true
+sniffer:
+  enable: true
+  override-destination: true
+  sniff:
+    QUIC:
+      ports:
+      - 443
+    TLS:
+      ports:
+      - 443
+      - 8443
+    HTTP:
+      ports:
+      - 80
+      - 8080-8880
+      override-destination: true
+  force-domain:
+  - "+.netflix.com"
+  - "+.nflxvideo.net"
+  - "+.amazonaws.com"
+  - "+.media.dssott.com"
+  skip-domain:
+  - "+.apple.com"
+  - Mijia Cloud
+  - dlg.io.mi.com
+  - "+.oray.com"
+  - "+.sunlogin.net"
+  - "+.push.apple.com"
+  parse-pure-ip: true
+profile:
+  store-selected: true
+authentication:
+- Clash:reyre
