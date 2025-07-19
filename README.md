@@ -1,1 +1,1 @@
-Diuji pada OpenWRT - Open Clash 23.05.5 HG680P
+Diuji pada Open Clash - OpenWRT 23.05.5 HG680P
