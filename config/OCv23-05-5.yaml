@@ -27,7 +27,7 @@ rule-providers:
     type: file
     behavior: classical
     path: "./rule_provider/ewallet.yaml"
-  Indonesia:
+  Indo:
     type: file
     behavior: classical
     path: "./rule_provider/indonesia.yaml"
@@ -171,7 +171,7 @@ rules:
 - IP-CIDR,198.18.0.1/16,REJECT,no-resolve
 - DOMAIN-SUFFIX,quiz.vidio.com,DIRECT,no-resolve
 - IP-CIDR,8.8.8.8/32,DIRECT,no-resolve
-- RULE-SET,Indonesia,HanyaID
+- RULE-SET,Indo,HanyaID
 - "RULE-SET,Sosmed,\U0001F4F1 Media-Sosial"
 - "RULE-SET,Ewallet,\U0001F4B3 Transaksi"
 - "RULE-SET,Games,\U0001F3AE Game"
